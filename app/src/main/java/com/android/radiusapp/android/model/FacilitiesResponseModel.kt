@@ -17,7 +17,7 @@ data class Facility(
     @SerializedName("name")
     val name: String,
     @SerializedName("options")
-    val options: ArrayList<OptionData>
+    val options: ArrayList<Option>
 )
 
 

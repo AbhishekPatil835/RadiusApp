@@ -3,12 +3,10 @@ package com.android.radiusapp.android.repositories
 import com.android.radiusapp.android.DataRefreshManager
 import com.android.radiusapp.android.database.FacilityDao
 import com.android.radiusapp.android.model.Exclusion
-import com.android.radiusapp.android.model.ExclusionData
 import com.android.radiusapp.android.model.FacilityData
 import com.android.radiusapp.android.model.FacilitiesResponseModel
 import com.android.radiusapp.android.model.Facility
 import com.android.radiusapp.android.model.Option
-import com.android.radiusapp.android.model.OptionData
 import io.reactivex.rxjava3.core.Single
 import retrofit2.Response
 import javax.inject.Inject
@@ -48,17 +46,17 @@ class RadiusRepository @Inject constructor(
         val facilityDataList = mutableListOf<FacilityData>()
 
         for (facility in response.facilities) {
-            val options = mutableListOf<OptionData>()
+            val options = mutableListOf<Option>()
             for (option in facility.options) {
-                val optionData = OptionData(option.icon, option.id, option.name)
+                val optionData = Option(option.icon, option.id, option.name)
                 options.add(optionData)
             }
 
-            val exclusions = mutableListOf<ExclusionData>()
+            val exclusions = mutableListOf<Exclusion>()
             for (exclusionList in response.exclusions) {
                 for (exclusion in exclusionList) {
                     if (exclusion.facilityId == facility.facilityId) {
-                        val exclusionData = ExclusionData(exclusion.facilityId, exclusion.optionsId)
+                        val exclusionData = Exclusion(exclusion.facilityId, exclusion.optionsId)
                         exclusions.add(exclusionData)
                     }
                 }
@@ -94,7 +92,7 @@ class RadiusRepository @Inject constructor(
             }
 
             val facility = Facility(facilityData.id, facilityData.name,
-                facilityData.options as ArrayList<OptionData>
+                facilityData.options as ArrayList<Option>
             )
             facilities.add(facility)
         }

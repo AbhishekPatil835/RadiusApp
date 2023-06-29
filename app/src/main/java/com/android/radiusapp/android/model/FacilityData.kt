@@ -7,20 +7,9 @@ import androidx.room.PrimaryKey
 data class FacilityData(
     @PrimaryKey val id: String,
     val name: String,
-    val options: List<OptionData>,
-    val exclusions: List<ExclusionData>
+    val options: List<Option>,
+    val exclusions: List<Exclusion>
     // Include other properties as needed
-)
-
-data class ExclusionData(
-    val facilityId: String,
-    val optionsId: String
-)
-
-data class OptionData(
-    val icon: String,
-    val id: String,
-    val name: String
 )
 
 

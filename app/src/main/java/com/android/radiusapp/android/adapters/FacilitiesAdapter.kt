@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.radiusapp.R
 import com.android.radiusapp.android.model.Exclusion
 import com.android.radiusapp.android.model.Facility
-import com.android.radiusapp.android.model.OptionData
+import com.android.radiusapp.android.model.Option
 
 class FacilitiesAdapter(
     private val facilities: ArrayList<Facility>,
@@ -52,7 +52,7 @@ class FacilitiesAdapter(
     }
 
     inner class OptionsAdapter(
-        private val options: ArrayList<OptionData>,
+        private val options: ArrayList<Option>,
         private val facilityId: String
     ) : RecyclerView.Adapter<OptionsAdapter.OptionViewHolder>() {
 
@@ -73,7 +73,7 @@ class FacilitiesAdapter(
             private val optionIcon: ImageView = itemView.findViewById(R.id.option_icon)
             private val optionName: TextView = itemView.findViewById(R.id.option_name)
             private val optionCheckbox: CheckBox = itemView.findViewById(R.id.option_checkbox)
-            fun bind(option: OptionData) {
+            fun bind(option: Option) {
                 optionIcon.setImageResource(getIconResourceId(option.icon))
                 optionName.text = option.name
                 optionCheckbox.isChecked = option.id == selectedOptions[facilityId]
