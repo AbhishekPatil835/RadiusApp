@@ -1,0 +1,103 @@
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.4.2'
+        classpath 'com.google.dagger:hilt-android-gradle-plugin:2.46.1'
+    }
+}
+plugins {
+    id 'com.android.application' version '8.0.2' apply false
+    id 'com.android.library' version '8.0.2' apply false
+    id 'org.jetbrains.kotlin.android' version '1.8.20' apply false
+}
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+allprojects {
+    project.ext {
+        minSdkVersion = 23
+        targetSdkVersion = 33
+        compileSdkVersion = 33
+    }
+}
+ext {
+    coreVersion = "1.8.0"
+    appCompatVersion = "1.4.2"
+    testJunitVersion = "1.1.3"
+    espressoVersion = "3.4.0"
+    materialVersion = "1.6.1"
+    junitVersion = "4.13.2"
+    rxJavaVersion = "3.1.4"
+    rxKotlinVersion = "3.0.1"
+    rxAndroidVersion = "3.0.0"
+    hiltVersion = "2.46.1"
+    chuckerVersion = "3.5.2"
+    gsonVersion = "2.9.0"
+    timberVersion = "5.0.1"
+    okhttpVersion = "4.9.3"
+    retrofitVersion = "2.9.0"
+    constraintLayoutVersion = "2.1.4"
+    navigationVersion = "2.5.0"
+    glideVersion = "4.14.2"
+    browserVersion = "1.4.0"
+    activityKtxVersion = "1.6.1"
+
+    androidxLibraries = [
+            coreKtx         : "androidx.core:core-ktx:${coreVersion}",
+            appCompat       : "androidx.appcompat:appcompat:${appCompatVersion}",
+            constraintLayout: "androidx.constraintlayout:constraintlayout:${constraintLayoutVersion}",
+
+            activityKtx     : "androidx.activity:activity-ktx:${activityKtxVersion}",
+            browser         : "androidx.browser:browser:${browserVersion}"
+    ]
+    materialLibraries = [
+            material: "com.google.android.material:material:${materialVersion}"
+    ]
+    navigationLibraries = [
+            navFragment: "androidx.navigation:navigation-fragment-ktx:${navigationVersion}",
+            navUi      : "androidx.navigation:navigation-ui-ktx:${navigationVersion}"
+    ]
+    testLibraries = [
+            junit       : "junit:junit:${junitVersion}",
+            testJunit   : "androidx.test.ext:junit:${testJunitVersion}",
+            textEspresso: "androidx.test.espresso:espresso-core:${espressoVersion}"
+    ]
+    commonLibraries = [
+            rxJava   : "io.reactivex.rxjava3:rxjava:${rxJavaVersion}",
+            rxKotlin : "io.reactivex.rxjava3:rxkotlin:${rxKotlinVersion}",
+            rxAndroid: "io.reactivex.rxjava3:rxandroid:${rxAndroidVersion}"
+    ]
+    hiltLibraries = [
+            hiltAndroid : "com.google.dagger:hilt-android:${hiltVersion}",
+            hiltCompiler: "com.google.dagger:hilt-compiler:${hiltVersion}"
+    ]
+    googleLibraries = [
+            gson: "com.google.code.gson:gson:${gsonVersion}"
+    ]
+
+    squareLibraries = [
+            timber: "com.jakewharton.timber:timber:${timberVersion}"
+    ]
+    networkLibraries = [
+            retrofit               : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            retrofitConverterGson  : "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
+            retrofitConverterScalar: "com.squareup.retrofit2:converter-scalars:${retrofitVersion}",
+            retrofitRxJava3Adapter : "com.squareup.retrofit2:adapter-rxjava3:${retrofitVersion}",
+
+            okhttp                 : "com.squareup.okhttp3:okhttp:${okhttpVersion}",
+            okhttpInterceptor      : "com.squareup.okhttp3:logging-interceptor:${okhttpVersion}",
+
+            chuckerDebug           : "com.github.chuckerteam.chucker:library:${chuckerVersion}",
+            chuckerRelease         : "com.github.chuckerteam.chucker:library-no-op:${chuckerVersion}",
+    ]
+    glideLibraries = [
+            glide                   :  "com.github.bumptech.glide:glide:${glideVersion}",
+            glideCompiler           :  "com.github.bumptech.glide:compiler:${glideVersion}"
+    ]
+
+}
